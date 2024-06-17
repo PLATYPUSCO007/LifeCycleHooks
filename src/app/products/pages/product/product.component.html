@@ -1,0 +1,32 @@
+<p>product works!</p>
+
+<button (click)="check = !check">Toggle</button>
+
+<button (click)="incrementPrice()">Incrementar</button>
+
+<app-price *ngIf="check" [price]="increment"/>
+
+<hr>
+<h1>Directivas</h1>
+<hr>
+<div class="d-flex flex-row justify-content-evenly">
+    <form [formGroup]="formDirectives">
+        <div class="d-flex flex-auto">
+            <label for="producto" class="form-label">
+                Producto:
+                <input type="text" class="form-control" formControlName="name">
+            </label>
+        </div>
+        <div class="d-flex flex-auto">
+            <p appCustomLabel [color]="color" [myError]="formDirectives.get('name')?.errors">Informacion del campo</p>
+        </div>
+        <div class="d-flex flex-auto flex-auto">
+            <button class="btn btn-info" (click)="changeColor()">Cambiar color</button>
+        </div>
+    </form>
+</div>
+
+<pre>
+    {{color}}
+    <p>{{formDirectives.get('name')?.errors | json}}</p>
+</pre>
